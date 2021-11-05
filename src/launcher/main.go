@@ -11,6 +11,8 @@ func main() {
 	fmt.Println("Test Hello!")
 	greeting.Greet1()
 	greeting.Greet2()
+
+	//Greet3 is added for verifying git commits.
 	greeting.Greet3()
 
 	fmt.Println("Enter a grade: ")

@@ -11,6 +11,7 @@ func Greet2() {
 }
 
 //Greet3 is added to verify git commits.
+//Mapped in main.go
 func Greet3() {
 	fmt.Println("Greet3")
 }
