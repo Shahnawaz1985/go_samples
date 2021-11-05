@@ -11,6 +11,7 @@ func main() {
 	fmt.Println("Test Hello!")
 	greeting.Greet1()
 	greeting.Greet2()
+	greeting.Greet3()
 
 	fmt.Println("Enter a grade: ")
 
@@ -24,7 +25,7 @@ func main() {
 
 	if grade > 60 {
 		status = "passing score"
-	}else{
+	} else {
 		status = "failing score"
 	}
 
