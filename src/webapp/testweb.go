@@ -18,9 +18,9 @@ func viewHandler(writer http.ResponseWriter, request *http.Request) {
 }
 
 func main() {
-	go responseSize("http://example.com")
-	go responseSize("http://golang.org")
-	go responseSize("http://golang.org/doc")
+	go responseSize("https://example.com")
+	go responseSize("https://golang.org")
+	go responseSize("https://golang.org/doc")
 	time.Sleep(5 * time.Second)
 
 	http.HandleFunc("/hello", viewHandler)
