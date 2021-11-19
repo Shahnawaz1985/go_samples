@@ -1,4 +1,4 @@
-//Package keyboard responsible for collecting user inputs from command line!
+//Package keyboard is created for taking user input for string to float64 conversion.
 package keyboard
 
 import (
@@ -9,20 +9,22 @@ import (
 	"strings"
 )
 
-//GetFloat takes user input as String and then converts it into Float64.
-//It also takes care of invalid inputs.
-func GetFloat() (float64, error) {
+//GetInput is a function used for taking user input.
+func GetInput() (float64, error) {
+	fmt.Print("Provide Input : ")
 	reader := bufio.NewReader(os.Stdin)
 	input, err := reader.ReadString('\n')
+
 	if err != nil {
-		return 0, fmt.Errorf("double is required as an Input")
+		return 0, fmt.Errorf("invalid input")
 	}
 
 	input = strings.TrimSpace(input)
+
 	number, err := strconv.ParseFloat(input, 64)
 
 	if err != nil {
-		return 0, fmt.Errorf("problem occurred during string to double conversion")
+		return 0, fmt.Errorf("string to float conversion failed")
 	}
 
 	return number, nil
