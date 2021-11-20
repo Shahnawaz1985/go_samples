@@ -18,10 +18,15 @@ func viewHandler(writer http.ResponseWriter, request *http.Request) {
 }
 
 func main() {
-	go responseSize("https://example.com")
-	go responseSize("https://golang.org")
-	go responseSize("https://golang.org/doc")
-	time.Sleep(5 * time.Second)
+	sizes := make(chan int)
+
+	go responseSize("https://example.com", sizes)
+	go responseSize("https://golang.org", sizes)
+	go responseSize("https://golang.org/doc", sizes)
+	//time.Sleep(5 * time.Second)
+	fmt.Println(<-sizes)
+	fmt.Println(<-sizes)
+	fmt.Println(<-sizes)
 
 	http.HandleFunc("/hello", viewHandler)
 	err := http.ListenAndServe("localhost:8080", nil)
@@ -30,7 +35,7 @@ func main() {
 	}
 }
 
-func responseSize(url string) {
+func responseSize(url string, channel chan int) {
 	start := time.Now()
 	fmt.Println("Getting :", url)
 	response, err := http.Get(url)
@@ -48,5 +53,5 @@ func responseSize(url string) {
 	fmt.Printf("Length of body for %s after GET : %d", url, len(body))
 	fmt.Println()
 	fmt.Println(fmt.Sprintf("%s took %s", url, time.Since(start)))
-
+	channel <- len(body)
 }
