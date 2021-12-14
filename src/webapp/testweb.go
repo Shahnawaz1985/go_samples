@@ -28,11 +28,11 @@ func main() {
 	fmt.Println(<-sizes)
 	fmt.Println(<-sizes)
 
-	http.HandleFunc("/hello", viewHandler)
+	/*http.HandleFunc("/hello", viewHandler)
 	err := http.ListenAndServe("localhost:8080", nil)
 	if err != nil {
 		log.Fatal(err)
-	}
+	}*/
 }
 
 func responseSize(url string, channel chan int) {
