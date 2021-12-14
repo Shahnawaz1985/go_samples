@@ -24,7 +24,7 @@ func filterGopher(upstream, downstream chan string) {
 	close(downstream)
 }
 
-func printGropher(upstream chan string) {
+func printGopher(upstream chan string) {
 	for v := range upstream {
 		fmt.Printf("Value captured :%s\n", v)
 	}
@@ -35,5 +35,5 @@ func main() {
 	c1 := make(chan string)
 	go sourceGopher(c0)
 	go filterGopher(c0, c1)
-	printGropher(c1)
+	printGopher(c1)
 }
